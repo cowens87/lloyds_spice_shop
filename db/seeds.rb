@@ -1,7 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+@lloyds_spice_shop = Store.create!(name: 'Lloyds Spice Shop', address: '156 Spicy Lane', description: 'Old school spice shop with fair trade spices, ground daily')
+
+@salim   = Customer.create!(name: 'Salim', available_cash: 10.00, store_id: @lloyds_spice_shop.id)
+@sally   = Customer.create!(name: 'Sally', available_cash: 15.20, store_id: @lloyds_spice_shop.id)
+@manu    = Customer.create!(name: 'Manu', available_cash: 40.00, store_id: @lloyds_spice_shop.id)
+
+@paprika = Spice.create!(name: 'Paprika', price: 5.80, store_id: @lloyds_spice_shop.id)
+@pepper  = Spice.create!(name: 'Pepper', price: 1.80, store_id: @lloyds_spice_shop.id)
+@salt    = Spice.create!(name: 'Salt', price: 1.80, store_id: @lloyds_spice_shop.id)
+@cumin   = Spice.create!(name: 'Cumin', price: 2.60, store_id: @lloyds_spice_shop.id)
+@annote  = Spice.create!(name: 'Annote', price: 4.00, store_id: @lloyds_spice_shop.id)
+@bebere  = Spice.create!(name: 'Bebere', price: 6.50, store_id: @lloyds_spice_shop.id)
+
+@cart1  = Cart.create!(status: 0, quantity: 2, price: 5.80, customer_id: @salim.id, spice_id: @paprika.id )
+@cart1  = Cart.create!(status: 0, quantity: 3, price: 1.80, customer_id: @salim.id, spice_id: @salt.id )
+@cart1  = Cart.create!(status: 0, quantity: 1, price: 6.50, customer_id: @salim.id, spice_id: @bebere.id )
+@cart2  = Cart.create!(status: 0, quantity: 12, price: 4.00, customer_id: @manu.id, spice_id: @annote.id )
+@cart2  = Cart.create!(status: 0, quantity: 1, price: 2.60, customer_id: @manu.id, spice_id: @cumin.id )
+@cart2  = Cart.create!(status: 0, quantity: 1, price: 2.60, customer_id: @manu.id, spice_id: @cumin.id )
+@cart3  = Cart.create!(status: 0, quantity: 15, price: 1.80, customer_id: @sally.id, spice_id: @salt.id )
